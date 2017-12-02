@@ -1,0 +1,30 @@
+	.data 
+
+mensagem:	.asciiz "digite um numero\n"
+mensagem2:	.asciiz "O numero do sucessor do sucessor "
+numero:		.word 1	
+sucessor:	.word 1
+	.text 
+
+main:	li $v0,4
+	la $a0,mensagem
+	syscall
+
+	li $v0, 5
+	syscall
+
+	sw $v0, numero
+
+	addi $t0, $v0,2
+
+	sw $t0, sucessor
+
+ 	li $v0,4
+	la $a0,mensagem2
+	syscall
+
+	li $v0, 1
+	move $a0, $t0
+	syscall
+
+	jr $ra
